@@ -1,0 +1,70 @@
+
+<h1>Parent component</h1>
+
+<div class="main">
+  <div class="heading">
+    Registration Form
+  </div>
+
+<form [formGroup]="home" (ngSubmit)="get()">
+<label for="name"> Name: <br>
+  <input type="text" placeholder="Enter Valid Name" formControlName="name" >
+  <span style="color: red;" *ngIf="home.controls.name.invalid && home.controls.name.touched">Enter your valid Name</span>
+</label>
+<br>
+
+<label for="name"> Email: <br>
+  <input type="text" placeholder="Enter Valid Email" formControlName="email">
+  <span style="color: red;" *ngIf="home.controls.email.invalid && home.controls.email.touched">Enter your valid Email</span>
+</label>
+<br>
+
+<label for="name"> Contact.No: <br>
+  <input type="number" placeholder="Enter Valid Contactno" formControlName="contactno">
+  <span style="color: red;" *ngIf="home.controls.contactno.invalid && home.controls.contactno.touched">Enter your valid Contactno</span>
+</label>
+<br>
+
+<label for="name"> Age: <br>
+  <input type="number" placeholder="Enter Valid Age" formControlName="age">
+  <span style="color: red;" *ngIf="home.controls.age.invalid && home.controls.age.touched">Enter your valid Age</span>
+</label>
+<br>
+
+<button>Submit</button>
+<!-- <button [routerLink]="'list'">View list</button> -->
+<!-- [disabled]="home.invalid" -->
+</form>
+
+
+
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Firstname</th>
+      <th scope="col">email</th>
+      <th scope="col">contactno</th>
+      <th scope="col">age</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let item of entries ; let i = index">
+    <tr>
+      <th scope="row">{{i + 1}}</th>
+      <td>{{item.name}}</td>
+      <td>{{item.email}}</td>
+      <td>{{item.contactno}}</td>
+      <td>{{item.age}}</td>
+    </tr>
+  </tbody>
+    </table>
+
+<app-previewform [data]="entries " *ngIf="entries.length> 0" (newEvent)='remove($event)'> ></app-previewform>
+<!-- <button (click)="remove()">remove</button> -->
+
+<!-- <app-previewform #childView></app-previewform> -->
+
+
+
